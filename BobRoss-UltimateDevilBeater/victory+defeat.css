@@ -1,0 +1,35 @@
+body {
+	text-align: center;
+}
+h1 {
+	color: magenta;
+	text-shadow: -1px 1px black;
+	font-size: 45px;
+}
+h2 {
+	text-shadow: -1px 1px white;
+	font-size: 45px;
+}
+.happy-accidents {
+	color: magenta;
+}
+img {
+	height: 25%;
+	width: 25%;
+}
+a {
+	color: magenta;
+	text-shadow: -.5px .5px black;
+	font-size: 20px;
+}
+#victory {
+    background-image: url("images/victory-screen-background.jpeg");
+    background-size: 100%;
+}
+#defeat {
+	background-image: url("images/defeat-screen-background.jpeg");
+    background-size: 100%;
+}
+iframe {
+	border: 0px;
+}
