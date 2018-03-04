@@ -3,8 +3,14 @@ body{
     background-size: 100%;
 }
 .playgame {
-	position: relative;
+	position: absolute;
 	top: 33em;
+	left: 25em;
+	color: white;
+}
+.aboutlink {
+	position: absolute;
+	top: 43em;
 	left: 25em;
 	color: white;
 }
