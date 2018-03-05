@@ -1,9 +1,14 @@
 <head>
 	<title>Ultimate Devil Beater</title>
-	<link rel="stylesheet" href="menu.css">
+	<link rel="stylesheet" href="index.css">
 </head>
 <html>
-	<body>
+	<body onload="loadMenu()">
 		<a href = menu.html>Go to Menu</a>
 	</body>
+	<script>
+		loadMenu() {
+			window.location.href = "menu.html";
+		}
+	</script>
 </html>
