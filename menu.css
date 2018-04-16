@@ -1,18 +1,13 @@
+@import url("general-style.css");
 body{
     background-image: url("images/painted-menu-screen.jpeg");
     background-size: 100%;
 }
-.playgame {
+.options {
+	text-align: center;
 	position: absolute;
 	top: 33em;
 	left: 25em;
-	color: white;
-}
-.aboutlink {
-	position: absolute;
-	top: 43em;
-	left: 25em;
-	color: white;
 }
 iframe {
 	border: 0px;
