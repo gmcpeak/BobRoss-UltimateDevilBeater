@@ -4,20 +4,28 @@
 </head>
 <style>
 	@import url("general-style.css");
-	h1, a {
+	h1 {
 		font-family: "Pig";
+		color: white;
 	}
 	body{
 		text-align: center;
 		background: url("images/gm-background.jpg") no-repeat center center fixed;
 		background-size: cover;
 	}
+	.logo {
+		height: 20%;
+		width: 20%;
+	}
+	.button {
+		background-color: white;
+	}
 </style>
 <html>
 	<h1>Game Modes</h1>
-		<button onclick = "window.location.href='campaign.html'">Bob Ross vs The Armies of Hell</button>
-		<br></br>
-		<button onclick = "window.location.href='arcade.html'">Bob Ross vs The Illuminati</button>
-		<br></br>
-		<button onclick = "window.location.href='menu.html'">Return to Menu</button>
+	<button onclick = "window.location.href='campaign.html'" class = "button"><img src = "images/aoh-logo.png" class = "logo"></button>
+	<br></br>
+	<button onclick = "window.location.href='arcade.html'" class = "button"><img src = "images/vs-i-logo.png" class = "logo"></button>
+	<br></br>
+	<button onclick = "window.location.href='menu.html'">Return to Menu</button>
 </html>

@@ -9,14 +9,33 @@
 	}
 	body {
 		text-align: center;
+		background: url("images/aoh-menu-background.jpg") no-repeat center center fixed;
+		background-size: cover;
+	}
+	div{
+		background-color: white;
+		max-width: 1000px;
+    	margin: auto;
+    	padding-top: 1px;
+    	padding-bottom: 1px;
+    	padding-left: 20px;
+    	padding-right: 20px;
+	}
+	#logo {
+		height: 40%;
+		width: 40%;
+	}
 </style>
 <html>
 	<body>
-		<h1>Bob Ross vs The Armies of Hell</h1>
-		<a href = "game.html">Demo</a>
-		<br></br>
-		<button onclick = "window.location.href='modes.html'">Return to Game Modes</button>
-		<br></br>
-		<button onclick = "window.location.href='menu.html'">Return to Main Menu</button>
+		<div>
+			<img src = "images/aoh-logo.png" id = "logo"></img>
+			<br></br>
+			<a href = "game.html">Demo</a>
+			<br></br>
+			<button onclick = "window.location.href='modes.html'">Return to Game Modes</button>
+			<br></br>
+			<button onclick = "window.location.href='menu.html'">Return to Main Menu</button>
+		</div>
 	</body>
 </html>

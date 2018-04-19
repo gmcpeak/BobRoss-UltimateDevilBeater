@@ -4,10 +4,36 @@
 </head>
 <style>
 	@import url("general-style.css");
-	h1 {
+	h1, a {
 		font-family: "Pig";
+	}
+	body {
+		text-align: center;
+		background: url() no-repeat center center fixed;
+		background-size: cover;
+	}
+	div{
+		background-color: white;
+		max-width: 1000px;
+    	margin: auto;
+    	padding-top: 1px;
+    	padding-bottom: 1px;
+    	padding-left: 20px;
+    	padding-right: 20px;
+	}
+	#logo {
+		height: 40%;
+		width: 40%;
 	}
 </style>
 <html>
-	<h1>Bob Ross vs The Illuminati</h1>
+	<body>
+		<div>
+			<img src = "images/vs-i-logo.png" id = "logo"></img>
+			<br></br>
+			<button onclick = "window.location.href='modes.html'">Return to Game Modes</button>
+			<br></br>
+			<button onclick = "window.location.href='menu.html'">Return to Main Menu</button>
+		</div>
+	</body>
 </html>
