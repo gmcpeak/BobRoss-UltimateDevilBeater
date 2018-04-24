@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+	<title>Ultimate Devil Beater</title>
+	<link rel="stylesheet" href="game.css">
+</head>
+<html>
+	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
+		<header id = "infoBar">
+			<img src = "images/painted-brudb-logo.png" id = "logo"></img>
+			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
+			<h2 id = "score">Score: 0</h2>
+		</header>
+		<div class="moveable" id = "bob"><img src = images/Bob-Ross-Sprite.png id = "bob-img"></img></div>
+	</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+		var enemies = [];
+		var key_w = false;
+		var key_a = false;
+		var key_s = false;
+		var key_d = false;
+
+		var x = 0;
+		var y = 0;
+		var speed = 20;
+
+		var bobHP = 20;
+		var score = 0;
+
+		var timer = 0;
+
+		function gameloop() {
+			timer++;
+			if (timer%100 == 0) {
+				generateEnemy();
+			}
+  			if (key_w) { y-=speed; }
+  			if (key_a) { $(document.getElementById("bob")).addClass('flipped'); x-=speed; }
+  			if (key_s) { y+=speed; }
+  			if (key_d) { $(document.getElementById("bob")).removeClass('flipped'); x+=speed; }
+  			var dude = document.getElementById("bob");
+  			if (x <= 55) {
+  				x = 55;
+  			}
+  			if (y <= 55){
+  				y = 55;
+  			}
+  			if (x >= window.innerWidth - 125) {
+  				x = window.innerWidth - 125;
+  			}
+  			if (y >= window.innerHeight - 125) {
+  				y = window.innerHeight - 125;
+  			}
+  			dude.style.left = x + "px";
+  			dude.style.top = y + "px";
+		}
+		function keydowner(event) {
+ 			var k = event.which || event.keyCode;
+ 			if (k == 87) { key_w = true; }
+ 			if (k == 65) { key_a = true; }
+ 			if (k == 83) { key_s = true; }
+ 			if (k == 68) { key_d = true; }	
+		}
+		function keyupper(event) {
+ 			var k = event.which || event.keyCode;
+ 			if (k == 87) { key_w = false; }
+ 			if (k == 65) { key_a = false; }
+ 			if (k == 83) { key_s = false; }
+ 			if (k == 68) { key_d = false; }
+ 			if (k == 32) { fire(k, x, y) }
+		}
+		function fire (k, i, j) {
+			var area = document.createElement("div");                     // Create a <div> element
+			var t = document.createElement("IMG");       // Create a text node
+			t.setAttribute("src", "images/Paint-Blob-Sprite.png");
+			t.setAttribute("width", "25");
+			t.setAttribute("height", "25");
+			area.appendChild(t);                                          // Append the text to <p>
+			document.body.appendChild(area);
+			area.setAttribute("class", "bob-bullet");
+			if ($(document.getElementById("bob")).hasClass('flipped')){
+				area.style.left = (i-25) + "px";
+				$(area).addClass('flipped');
+			} else {
+				area.style.left = (i+100) + "px";
+			}
+			area.style.top = (j+45) + "px";
+			if (key_w == true) {
+				bulletTravelUp(area);
+			} else if (key_a == true) {
+				bulletTravelLeft(area);
+			} else if (key_s == true) {
+				bulletTravelDown(area);
+			} else if (key_d == true) {
+				bulletTravelRight(area);
+			}  else {
+				if ($(document.getElementById("bob")).hasClass('flipped')) {
+					bulletTravelLeft(area);
+				} else {
+					bulletTravelRight(area);
+				}
+			}             
+		}
+		function bulletTravelUp (bullet) {
+			$(bullet).animate({top: '55px'});
+			setInterval(function(){$(bullet).hide()}, 400);
+		}
+		function bulletTravelLeft (bullet) {
+			$(bullet).animate({left: '55px'});
+			setInterval(function(){$(bullet).hide()}, 400);
+		}
+		function bulletTravelDown (bullet) {
+			$(bullet).animate({top: '95%'});
+			setInterval(function(){$(bullet).hide()}, 400);
+		}
+		function bulletTravelRight (bullet) {
+			$(bullet).animate({left: '95%'});
+			setInterval(function(){$(bullet).hide()}, 400);
+		}
+
+		function generateEnemy() {
+			score++;
+			document.getElementById("score").innerHTML = "Score: " + score + "";
+		}
+	</script>
+</html>

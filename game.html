@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="game.css">
 </head>
 <html>
-	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)" >
+	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
 		<header id = "infoBar">
 			<img src = "images/painted-brudb-logo.png" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
@@ -123,7 +123,7 @@
 					$(dangers2[i]).hide();
 				}
 			}
-			if (devilHP == 0) {
+			if (devilHP <= 0) {
 				window.location.href = "victory.html";
 			}
 		}
@@ -132,8 +132,7 @@
  			if (k == 87) { key_w = true; }
  			if (k == 65) { key_a = true; }
  			if (k == 83) { key_s = true; }
- 			if (k == 68) { key_d = true; }
- 			if (k == 32) { fire(k, x, y) }
+ 			if (k == 68) { key_d = true; }	
 		}
 
 		function keyupper(event) {
@@ -142,6 +141,7 @@
  			if (k == 65) { key_a = false; }
  			if (k == 83) { key_s = false; }
  			if (k == 68) { key_d = false; }
+ 			if (k == 32) { fire(k, x, y) }
 		}
 
 		function fire (k, i, j) {
@@ -169,7 +169,11 @@
 			} else if (key_d == true) {
 				bulletTravelRight(area);
 			}  else {
-				$(area).hide();
+				if ($(document.getElementById("bob")).hasClass('flipped')) {
+					bulletTravelLeft(area);
+				} else {
+					bulletTravelRight(area);
+				}
 			}             
 		}
 		function enemyFire (devil) {
