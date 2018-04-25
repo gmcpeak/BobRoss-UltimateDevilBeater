@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<title>Ultimate Devil Beater</title>
-	<link rel="stylesheet" href="game.css">
+	<link rel="stylesheet" href="arcadeGame.css">
 </head>
 <html>
 	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
@@ -14,7 +14,6 @@
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
-		var enemies = [];
 		var key_w = false;
 		var key_a = false;
 		var key_s = false;
@@ -71,7 +70,7 @@
 		}
 		function fire (k, i, j) {
 			var area = document.createElement("div");                     // Create a <div> element
-			var t = document.createElement("IMG");       // Create a text node
+			var t = document.createElement("IMG");       // Create an image node
 			t.setAttribute("src", "images/Paint-Blob-Sprite.png");
 			t.setAttribute("width", "25");
 			t.setAttribute("height", "25");
@@ -117,10 +116,16 @@
 			$(bullet).animate({left: '95%'});
 			setInterval(function(){$(bullet).hide()}, 400);
 		}
-
 		function generateEnemy() {
 			score++;
 			document.getElementById("score").innerHTML = "Score: " + score + "";
+			var newEn = {type: "demon", hp: 10, area: document.createElement("div"), t: document.createElement("IMG")};
+			newEn.area.setAttribute("class", "enemy");
+			newEn.t.setAttribute("src", "images/Paint-Blob-Sprite.png");
+			newEn.area.appendChild(newEn.t);
+			newEn.t.setAttribute("width", "25");
+			newEn.t.setAttribute("height", "25");
+			document.body.appendChild(newEn.area);
 		}
 	</script>
 </html>
