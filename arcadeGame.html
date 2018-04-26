@@ -14,6 +14,8 @@
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
+		var enemies = new Array ();
+
 		var key_w = false;
 		var key_a = false;
 		var key_s = false;
@@ -21,11 +23,12 @@
 
 		var x = 0;
 		var y = 0;
+		var x2 = 0;
+		var y2 = 0;
 		var speed = 20;
 
 		var bobHP = 20;
 		var score = 0;
-
 		var timer = 0;
 
 		function gameloop() {
@@ -52,6 +55,44 @@
   			}
   			dude.style.left = x + "px";
   			dude.style.top = y + "px";
+  			var dir = Math.floor(Math.random() * 9);
+  			speed2 = Math.floor(Math.random() * (window.innerHeight-55));
+  			if (speed2 == 0) {
+  				speed2 = 10;
+  			}
+			if (dir == 0) {  y2-=speed2; }
+  			if (dir == 1) {  x2-=speed2; }
+  			if (dir == 2) {  y2+=speed2; }
+  			if (dir == 3) {  x2+=speed2; }
+  			if (dir == 4) {  y2-=speed2; x2-=speed2; }
+			if (dir == 5) {  y2-=speed2; x2+=speed2; }
+			if (dir == 6) {  y2+=speed2; x2-=speed2; }
+			if (dir == 7) {  y2+=speed2; x2+=speed2; }
+			if (dir == 8) {  y2+=speed2; x2+=speed2; }
+
+  			var dev = document.getElementById("devil");
+  			if (x2 <= 55) {
+  				x2 = 55;
+  			}
+  			if (y2 <= 55){
+  				y2 = 55;
+  			}
+  			if (x2 >= window.innerWidth - 125) {
+  				x2 = window.innerWidth - 125;
+  			}
+  			if (y2 >= window.innerHeight - 125) {
+  				y2 = window.innerHeight - 125;
+  			}
+  			if (dir == 0 || dir == 2) {
+  				$(dev).animate({top: y2 + "px"}, 400);
+  			} else if (dir == 1 || dir == 3) {
+  				$(dev).animate({left: x2 + "px"}, 400);
+  			} else if (dir >= 4 && dir <= 7) {
+  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  			} else {
+  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  			}
+  			enemyMove();
 		}
 		function keydowner(event) {
  			var k = event.which || event.keyCode;
@@ -120,12 +161,18 @@
 			score++;
 			document.getElementById("score").innerHTML = "Score: " + score + "";
 			var newEn = {type: "demon", hp: 10, area: document.createElement("div"), t: document.createElement("IMG")};
-			newEn.area.setAttribute("class", "enemy");
 			newEn.t.setAttribute("src", "images/Paint-Blob-Sprite.png");
 			newEn.area.appendChild(newEn.t);
 			newEn.t.setAttribute("width", "25");
 			newEn.t.setAttribute("height", "25");
 			document.body.appendChild(newEn.area);
+			newEn.area.setAttribute("class", "enemy");
+			newEn.area.setAttribute("class", "moveable");
+			newEn.area.style.left = "100px";
+			enemies.push(newEn);
+		}
+		function enemyMove() {
+			console.log(enemies.length);
 		}
 	</script>
 </html>
