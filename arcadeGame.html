@@ -29,11 +29,16 @@
 
 		var bobHP = 20;
 		var score = 0;
-		var timer = 0;
+		var timer1 = 0
+		var timer2 = 0;
 
 		function gameloop() {
-			timer++;
-			if (timer%200 == 0) {
+			timer1++;
+			if (timer1%50 == 0) {
+				scoreAdd(1);
+			}
+			timer2++;
+			if (timer2%200 == 0 || timer2 == 5) {
 				generateEnemy();
 			}
   			if (key_w) { y-=speed; }
@@ -62,6 +67,10 @@
   			}
   			enemyMove();
   			checkHP(dude);
+		}
+		function scoreAdd (num) {
+			score = score+num;
+			document.getElementById("score").innerHTML = "Score: " + score + "";
 		}
 		function keydowner(event) {
  			var k = event.which || event.keyCode;
@@ -127,12 +136,11 @@
 			setInterval(function(){$(bullet).hide()}, 400);
 		}
 		function generateEnemy() {
-			score++;
 			document.getElementById("score").innerHTML = "Score: " + score + "";
 			var newEn;
 			var enemyType = Math.floor(Math.random() * 9);
 			if (enemyType >= 7) {
-				newEn = {type: "eye", hp: 20, area: document.createElement("div"), t: document.createElement("IMG")};
+				newEn = {type: "eye", hp: 7, area: document.createElement("div"), t: document.createElement("IMG")};
 				newEn.t.setAttribute("src", "images/Eye-Sprite.png");
 				newEn.area.appendChild(newEn.t);
 				newEn.area.setAttribute("class", "glow");
@@ -257,6 +265,7 @@
 						if (enemies[j].hp <= 0) {
 							$(enemies[j].area).remove();
 							enemies.splice(j-1, 1);
+							scoreAdd(5);
 						}
 					}
 				}
