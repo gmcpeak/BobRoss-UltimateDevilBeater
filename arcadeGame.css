@@ -3,9 +3,13 @@ body{
     background-image: url("images/game-screen-background.jpeg");
     background-size: 100%;
 }
+.enemy {
+	position: absolute;
+}
 .moveable {
 	position: absolute;
 }
+
 header {
 	background-color: pink;
 	height: 50px;
@@ -34,7 +38,7 @@ h2 {
 .bob-bullet {
 	position: absolute;
 }
-.devil-bullet {
+.enem-bullet {
 	position: absolute;	
 }
 #bob-img {

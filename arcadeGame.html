@@ -33,7 +33,7 @@
 
 		function gameloop() {
 			timer++;
-			if (timer%100 == 0) {
+			if (timer%200 == 0) {
 				generateEnemy();
 			}
   			if (key_w) { y-=speed; }
@@ -60,39 +60,8 @@
   			if (speed2 == 0) {
   				speed2 = 10;
   			}
-			if (dir == 0) {  y2-=speed2; }
-  			if (dir == 1) {  x2-=speed2; }
-  			if (dir == 2) {  y2+=speed2; }
-  			if (dir == 3) {  x2+=speed2; }
-  			if (dir == 4) {  y2-=speed2; x2-=speed2; }
-			if (dir == 5) {  y2-=speed2; x2+=speed2; }
-			if (dir == 6) {  y2+=speed2; x2-=speed2; }
-			if (dir == 7) {  y2+=speed2; x2+=speed2; }
-			if (dir == 8) {  y2+=speed2; x2+=speed2; }
-
-  			var dev = document.getElementById("devil");
-  			if (x2 <= 55) {
-  				x2 = 55;
-  			}
-  			if (y2 <= 55){
-  				y2 = 55;
-  			}
-  			if (x2 >= window.innerWidth - 125) {
-  				x2 = window.innerWidth - 125;
-  			}
-  			if (y2 >= window.innerHeight - 125) {
-  				y2 = window.innerHeight - 125;
-  			}
-  			if (dir == 0 || dir == 2) {
-  				$(dev).animate({top: y2 + "px"}, 400);
-  			} else if (dir == 1 || dir == 3) {
-  				$(dev).animate({left: x2 + "px"}, 400);
-  			} else if (dir >= 4 && dir <= 7) {
-  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
-  			} else {
-  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
-  			}
   			enemyMove();
+  			checkHP(dude);
 		}
 		function keydowner(event) {
  			var k = event.which || event.keyCode;
@@ -160,19 +129,138 @@
 		function generateEnemy() {
 			score++;
 			document.getElementById("score").innerHTML = "Score: " + score + "";
-			var newEn = {type: "demon", hp: 10, area: document.createElement("div"), t: document.createElement("IMG")};
-			newEn.t.setAttribute("src", "images/Paint-Blob-Sprite.png");
-			newEn.area.appendChild(newEn.t);
-			newEn.t.setAttribute("width", "25");
-			newEn.t.setAttribute("height", "25");
+			var newEn;
+			var enemyType = Math.floor(Math.random() * 9);
+			if (enemyType >= 7) {
+				newEn = {type: "eye", hp: 20, area: document.createElement("div"), t: document.createElement("IMG")};
+				newEn.t.setAttribute("src", "images/Eye-Sprite.png");
+				newEn.area.appendChild(newEn.t);
+				newEn.area.setAttribute("class", "glow");
+				newEn.t.setAttribute("width", "120");
+				newEn.t.setAttribute("height", "120");
+			} else if (5 < enemyType && enemyType < 7) {
+				newEn = {type: "demon", hp: 5, area: document.createElement("div"), t: document.createElement("IMG")};
+				newEn.t.setAttribute("src", "images/Demon-Sprite.png");
+				newEn.area.appendChild(newEn.t);
+				newEn.t.setAttribute("width", "120");
+				newEn.t.setAttribute("height", "115");
+			} else {
+				newEn = {type: "druid", hp: 2, area: document.createElement("div"), t: document.createElement("IMG")};
+				newEn.t.setAttribute("src", "images/Druid-Sprite.png");
+				newEn.area.appendChild(newEn.t);
+				newEn.t.setAttribute("width", "100");
+				newEn.t.setAttribute("height", "100");
+			}
 			document.body.appendChild(newEn.area);
 			newEn.area.setAttribute("class", "enemy");
-			newEn.area.setAttribute("class", "moveable");
 			newEn.area.style.left = "100px";
 			enemies.push(newEn);
 		}
 		function enemyMove() {
-			console.log(enemies.length);
+			$( ".enemy" ).each(function() {
+				var x2 = 0;
+				var y2 = 0;
+				var dir = Math.floor(Math.random() * 9);
+  				var speed2 = Math.floor(Math.random() * (window.innerWidth));
+  				if (speed2 == 0) {
+  					speed2 = 10;
+  				}
+				if (dir == 0) {  y2-=speed2; }
+  				if (dir == 1) {  x2-=speed2; }
+  				if (dir == 2) {  y2+=speed2; }
+  				if (dir == 3) {  x2+=speed2; }
+  				if (dir == 4) {  y2-=speed2; x2-=speed2; }
+				if (dir == 5) {  y2-=speed2; x2+=speed2; }
+				if (dir == 6) {  y2+=speed2; x2-=speed2; }
+				if (dir == 7) {  y2+=speed2; x2+=speed2; }
+				if (dir == 8) {  y2+=speed2; x2+=speed2; }
+  				
+  				if (x2 <= 55) {
+  					x2 = 55;
+  				}
+  				if (y2 <= 55){
+  					y2 = 55;
+  				}
+  				if (x2 >= window.innerWidth - 125) {
+  					x2 = window.innerWidth - 125;
+  				}
+  				if (y2 >= window.innerHeight - 125) {
+  					y2 = window.innerHeight - 125;
+  				}
+  				if (dir == 0 || dir == 2) {
+  					$(this).animate({top: y2 + "px"}, 400);
+  				} else if (dir == 1 || dir == 3) {
+  					$(this).animate({left: x2 + "px"}, 400);
+  				} else if (dir >= 4 && dir <= 7) {
+  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  				} else {
+  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  					enemyFire(this);
+  				}
+			});
+		}
+		function enemyFire (en) {
+			var bullSpeed = Math.floor(Math.random() * 4);
+			var area = document.createElement("div");                     // Create a <div> element
+			var t = document.createElement("IMG");       // Create a text node
+			t.setAttribute("src", "images/Fire-Sprite.png");
+			t.setAttribute("width", "35");
+			t.setAttribute("height", "25");       // Create a text node
+			area.appendChild(t);                                          // Append the text to <p>
+			document.body.appendChild(area);
+			area.setAttribute("class", "enem-bullet"); 
+			area.style.left = en.style.left;
+			area.style.top = en.style.top;
+			if (bullSpeed == 0) {
+				bulletTravelRight(area);
+				$(area).addClass('flipped');
+			} else if (bullSpeed == 1) {
+				bulletTravelLeft(area);
+				$(area).removeClass('flipped');
+			} else if (bullSpeed == 2) {
+				bulletTravelUp(area);
+			} else if (bullSpeed == 3) {
+				bulletTravelDown(area);
+			}
+		}
+
+		function checkHP(dude) {
+			var dangers = document.getElementsByClassName("enem-bullet");
+			for (var i = 0; i < dangers.length; i++) {
+				var dangerArea = dangers[i].getBoundingClientRect();
+				var bobArea = dude.getBoundingClientRect();
+				var overlap = !(bobArea.right < dangerArea.left || 
+                				bobArea.left > dangerArea.right || 
+                				bobArea.bottom < dangerArea.top || 
+                				bobArea.top > dangerArea.bottom)
+				if (overlap == true) {
+					bobHP--;
+					document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
+					$(dangers[i]).hide();
+				}
+			}
+			if (bobHP == 0) {
+				window.location.href = "defeat.html";
+			}
+			var dangers2 = document.getElementsByClassName("bob-bullet");
+			for (var i = 0; i < dangers2.length; i++) {
+				for (var j = 0; j < enemies.length; j++) {
+					var dangerArea2 = dangers2[i].getBoundingClientRect();
+					var devArea = enemies[j].area.getBoundingClientRect();
+					var overlap2 = !(devArea.right < dangerArea2.left || 
+                					devArea.left > dangerArea2.right || 
+                					devArea.bottom < dangerArea2.top || 
+                					devArea.top > dangerArea2.bottom)
+					if (overlap2 == true) {
+						enemies[j].hp--;
+						$(dangers2[i]).hide();
+						if (enemies[j].hp <= 0) {
+							$(enemies[j].area).remove();
+							enemies.splice(j-1, 1);
+						}
+					}
+				}
+			}
 		}
 	</script>
 </html>
