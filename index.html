@@ -5,6 +5,14 @@
 <html>
 	<body>
 		<a href = menu.html>Launch</a>
+		<?php
+			if(!isset($_COOKIE["user"])) {
+    			$cookie_name = "user";
+    			$cookie_value = 1;
+    			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+    			echo "cookie set";
+			}
+		?>
 	</body>
 </html>
-<script>setTimeout(function(){window.location.href='menu.html'},0);</script>
+<script>setTimeout(function(){window.location.href='menu.html'},10000000);</script>
