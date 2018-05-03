@@ -1,6 +1,6 @@
-@import url("general-style.css");
+@import url("../general-style.css");
 body{
-    background-image: url("images/game-screen-background.jpeg");
+    background-color: black;
     background-size: 100%;
 }
 .moveable {
@@ -41,9 +41,9 @@ h2 {
 	height: 120px;
 	width: 100px;
 }
-#devil-img {
+#devil {
 	height: 120px;
-	width: 120px;
+	width: 140px;
 }
 .flipped {
     transform: scale(-1, 1);

@@ -196,13 +196,13 @@
   					y2 = window.innerHeight - 125;
   				}
   				if (dir == 0 || dir == 2) {
-  					$(this).animate({top: y2 + "px"}, 400);
+  					$(this).animate({top: y2 + "px"}, 500);
   				} else if (dir == 1 || dir == 3) {
-  					$(this).animate({left: x2 + "px"}, 400);
+  					$(this).animate({left: x2 + "px"}, 500);
   				} else if (dir >= 4 && dir <= 7) {
-  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 500);
   				} else {
-  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  					$(this).animate({top: y2 + "px", left: x2 + "px"}, 500);
   					enemyFire(this);
   				}
 			});

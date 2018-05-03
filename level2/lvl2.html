@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <head>
 	<title>Ultimate Devil Beater</title>
-	<link rel="stylesheet" href="lvl1.css">
+	<link rel="stylesheet" href="lvl2.css">
 </head>
 <html>
 	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
 		<header id = "infoBar">
 			<img src = "../images/painted-brudb-logo.png" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
-			<h2 id = "devil-name">Belphegor (HP: 35)</h2>
+			<h2 id = "devil-name">Amdusias (HP: 35)</h2>
 		</header>
 		<div class="moveable" id = "bob"><img src = ../images/Bob-Ross-Sprite.png id = "bob-img"></img></div>
-		<div class="moveable" id = "devil"><img src = ../images/Amdusias-Sprite.png id = "devil-img"></img></div>
+		<div class="moveable" id = "devil"><img src = ../images/Belphegor-Sprite.png id = "devil-img"></img></div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
@@ -22,7 +22,7 @@
 
 		var x = 0;
 		var y = 0;
-		var speed = 20;
+		var speed = 5;
 		var x2 = window.innerWidth - 20;
 		var y2 = window.innerHeight - 20;
 		var speed2 = 0;
@@ -119,7 +119,7 @@
                 				devArea.top > dangerArea2.bottom)
 				if (overlap2 == true) {
 					devilHP--;
-					document.getElementById("devil-name").innerHTML = "Amdusias (HP: " + devilHP + ")";
+					document.getElementById("devil-name").innerHTML = "Belphegor (HP: " + devilHP + ")";
 					$(dangers2[i]).hide();
 				}
 			}
