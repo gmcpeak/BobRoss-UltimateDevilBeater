@@ -57,7 +57,7 @@ VALUES (10000, 'test2')");
 if (!$res) {
  echo "Failed to insert: scores: score2 ".$con->error;
 } else {
- echo "Inserted: scores: score1";
+ echo "Inserted: scores: score2";
 }
 echo "<br>";
 ?>

@@ -248,7 +248,8 @@
 				}
 			}
 			if (bobHP == 0) {
-				window.location.href = "defeat.html";
+				localStorage.setItem("playerScore", score);
+				window.location.href = "addScore.html";
 			}
 			var dangers2 = document.getElementsByClassName("bob-bullet");
 			for (var i = 0; i < dangers2.length; i++) {
