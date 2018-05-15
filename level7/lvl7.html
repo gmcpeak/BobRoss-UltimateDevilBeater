@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <head>
 	<title>Ultimate Devil Beater</title>
-	<link rel="stylesheet" href="lvl6.css">
+	<link rel="stylesheet" href="lvl7.css">
 </head>
 <html>
 	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
 		<header id = "infoBar">
 			<img src = "../images/painted-brudb-logo.png" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
-			<h2 id = "devil-name">Beelzebub (HP: 35)</h2>
+			<h2 id = "devil-name">The Devil (HP: 35)</h2>
 		</header>
 		<div class="moveable" id = "bob"><img src = ../images/Bob-Ross-Sprite.png id = "bob-img"></img></div>
-		<div class="moveable" id = "devil"><img src = ../images/Beelzebub-Sprite.png id = "devil-img"></img></div>
+		<div class="moveable" id = "devil"><img src = ../images/Devil-Sprite.png id = "devil-img"></img></div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
@@ -73,21 +73,21 @@
   			if (y2 <= 55){
   				y2 = 55;
   			}
-  			if (x2 >= window.innerWidth - 175) {
-  				x2 = window.innerWidth - 175;
+  			if (x2 >= window.innerWidth - 185) {
+  				x2 = window.innerWidth - 185;
   			}
-  			if (y2 >= window.innerHeight - 125) {
-  				y2 = window.innerHeight - 125;
+  			if (y2 >= window.innerHeight - 155) {
+  				y2 = window.innerHeight - 155;
   			}
   			if (dir == 0 || dir == 2) {
-  				$(dev).animate({top: y2 + "px"}, 400);
+  				$(dev).animate({top: y2 + "px"}, 500);
   			} else if (dir == 1 || dir == 3) {
-  				$(dev).animate({left: x2 + "px"}, 400);
-  			} else if (dir >= 4 && dir <= 5) {
-  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
-  				enemyFire(dev, x2, y2);
+  				$(dev).animate({left: x2 + "px"}, 500);
+  			} else if (dir >= 4 && dir <= 7) {
+  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 500);
   			} else {
-  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 400);
+  				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 500);
+  				enemyFire(dev, x2, y2);
   			}
   			checkHP(dude, dev); 
   		}
@@ -106,7 +106,7 @@
 					$(dangers[i]).hide();
 				}
 			}
-			if (bobHP <= 0) {
+			if (bobHP == 0) {
 				window.location.href = "defeat.html";
 			}
 			var dangers2 = document.getElementsByClassName("bob-bullet");
@@ -119,7 +119,7 @@
                 				devArea.top > dangerArea2.bottom)
 				if (overlap2 == true) {
 					devilHP--;
-					document.getElementById("devil-name").innerHTML = "Beelzebub (HP: " + devilHP + ")";
+					document.getElementById("devil-name").innerHTML = "The Devil (HP: " + devilHP + ")";
 					$(dangers2[i]).hide();
 				}
 			}
