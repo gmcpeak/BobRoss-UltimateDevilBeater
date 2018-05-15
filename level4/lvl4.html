@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <head>
 	<title>Ultimate Devil Beater</title>
-	<link rel="stylesheet" href="lvl1.css">
+	<link rel="stylesheet" href="lvl4.css">
 </head>
 <html>
 	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
 		<header id = "infoBar">
 			<img src = "../images/painted-brudb-logo.png" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
-			<h2 id = "devil-name">Amdusias (HP: 35)</h2>
+			<h2 id = "devil-name">Leviathan (HP: 35)</h2>
 		</header>
 		<div class="moveable" id = "bob"><img src = ../images/Bob-Ross-Sprite.png id = "bob-img"></img></div>
-		<div class="moveable" id = "devil"><img src = ../images/Amdusias-Sprite.png id = "devil-img"></img></div>
+		<div class="moveable" id = "devil"><img src = ../images/Leviathan-Sprite.png id = "devil-img"></img></div>
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script>
@@ -30,7 +30,13 @@
 		var bobHP = 20;
 		var devilHP = 35;
 
+		var timer = 0;
+
 		function gameloop() {
+			timer++;
+			if (timer%50 == 0) {
+				loseBreath();
+			}
   			if (key_w) { y-=speed; }
   			if (key_a) { $(document.getElementById("bob")).addClass('flipped'); x-=speed; }
   			if (key_s) { y+=speed; }
@@ -76,8 +82,8 @@
   			if (x2 >= window.innerWidth - 175) {
   				x2 = window.innerWidth - 175;
   			}
-  			if (y2 >= window.innerHeight - 125) {
-  				y2 = window.innerHeight - 125;
+  			if (y2 >= window.innerHeight - 255) {
+  				y2 = window.innerHeight - 255;
   			}
   			if (dir == 0 || dir == 2) {
   				$(dev).animate({top: y2 + "px"}, 500);
@@ -90,6 +96,10 @@
   				enemyFire(dev, x2, y2);
   			}
   			checkHP(dude, dev); 
+  		}
+  		function loseBreath () {
+  			bobHP--;
+			document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
   		}
 		function checkHP(dude, dev) {
 			var dangers = document.getElementsByClassName("devil-bullet");
@@ -119,7 +129,7 @@
                 				devArea.top > dangerArea2.bottom)
 				if (overlap2 == true) {
 					devilHP--;
-					document.getElementById("devil-name").innerHTML = "Amdusias (HP: " + devilHP + ")";
+					document.getElementById("devil-name").innerHTML = "Leviathan (HP: " + devilHP + ")";
 					$(dangers2[i]).hide();
 				}
 			}
