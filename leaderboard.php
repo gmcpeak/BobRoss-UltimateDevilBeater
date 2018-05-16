@@ -25,4 +25,5 @@
     	echo "0 results";
 	}
 	$conn->close();
+	echo "<a href = menu.html>Back</a>"
 ?>

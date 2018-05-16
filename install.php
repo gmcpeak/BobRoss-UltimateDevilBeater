@@ -45,7 +45,7 @@ if (!$res) {
   
 // patrons
 $res = $con->query("INSERT INTO scores (score, name)
-VALUES (9000, 'test')");
+VALUES (0, 'test')");
 if (!$res) {
  echo "Failed to insert: scores: score1 ".$con->error;
 } else {
@@ -53,7 +53,7 @@ if (!$res) {
 }
 echo "<br>";
 $res = $con->query("INSERT INTO scores (score, name)
-VALUES (10000, 'test2')");
+VALUES (0, 'test2')");
 if (!$res) {
  echo "Failed to insert: scores: score2 ".$con->error;
 } else {
