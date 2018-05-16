@@ -49,8 +49,62 @@
 			btn.addEventListener ("click", function() {
   				window.location.href = "level1/1-intro.html";
 			});
-			var t = document.createTextNode("Level One");       // Create a text node
-			btn.appendChild(t);                                // Append the text to <button>
+			var t = document.createTextNode("Level One");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 2) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level2/2-intro.html";
+			});
+			var t = document.createTextNode("Level Two");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 3) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level3/3-intro.html";
+			});
+			var t = document.createTextNode("Level Three");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 4) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level4/4-intro.html";
+			});
+			var t = document.createTextNode("Level Four");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 5) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level5/5-intro.html";
+			});
+			var t = document.createTextNode("Level Five");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 6) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level6/6-intro.html";
+			});
+			var t = document.createTextNode("Level Six");      
+			btn.appendChild(t);                                
+			document.getElementById("buttons").appendChild(btn);
+		}
+		if (lvl >= 7) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level7/7-intro.html";
+			});
+			var t = document.createTextNode("Level Seven");      
+			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
 		}
 	}

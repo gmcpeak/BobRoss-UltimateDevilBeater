@@ -124,6 +124,9 @@
 				}
 			}
 			if (devilHP <= 0) {
+				if (localStroage.getItem("levelCount" <= 3)) {
+					localStorage.setItem("levelCount", 4);
+				}
 				window.location.href = "victory.html";
 			}
 		}
