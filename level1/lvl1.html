@@ -124,7 +124,7 @@
 				}
 			}
 			if (devilHP <= 0) {
-				if (localStroage.getItem("levelCount")<=1) {
+				if (localStorage.getItem("levelCount")==1) {
 					localStorage.removeItem("levelCount");
 					localStorage.setItem("levelCount", 2);
 				}
@@ -197,7 +197,6 @@
 				area.style.left = (parseInt(devil.style.left, 10) - 5) + "px";
 			}
 			area.style.top = (parseInt(devil.style.top, 10) + 20) + "px";
-			console.log(devil.style.left);
 			if (bullSpeed == 0) {
 				bulletTravelRight(area);
 				$(document.getElementById("devil")).addClass('flipped');

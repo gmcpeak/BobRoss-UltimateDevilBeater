@@ -1,6 +1,6 @@
 @import url("../general-style.css");
 body{
-    background-color: black;
+    background-image: url("../images/Leviathan-Background.jpeg");
     background-size: 100%;
 }
 .moveable {
@@ -41,8 +41,8 @@ h2 {
 	height: 120px;
 	width: 100px;
 }
-#devil {
-	height: 120px;
+#devil-img {
+	height: 250px;
 	width: 140px;
 }
 .flipped {

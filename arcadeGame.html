@@ -38,7 +38,7 @@
 				scoreAdd(1);
 			}
 			timer2++;
-			if (timer2%150 == 0 || timer2 == 5) {
+			if (timer2%140 == 0) {
 				generateEnemy();
 			}
   			if (key_w) { y-=speed; }
@@ -265,7 +265,7 @@
 						$(dangers2[i]).hide();
 						if (enemies[j].hp <= 0) {
 							$(enemies[j].area).remove();
-							enemies.splice(j-1, 1);
+							enemies.splice(j-1, j);
 							scoreAdd(5);
 						}
 					}

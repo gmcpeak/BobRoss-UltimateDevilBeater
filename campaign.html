@@ -43,6 +43,7 @@
 </html>
 <script>
 	function getLevels () { 
+		console.log(localStorage.getItem("levelCount"));
 		var lvl = localStorage.getItem("levelCount");
 		if (lvl >= 1) {
 			var btn = document.createElement("BUTTON");
@@ -52,6 +53,10 @@
 			var t = document.createTextNode("Level One");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 2) {
 			var btn = document.createElement("BUTTON");
@@ -61,6 +66,10 @@
 			var t = document.createTextNode("Level Two");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 3) {
 			var btn = document.createElement("BUTTON");
@@ -70,6 +79,10 @@
 			var t = document.createTextNode("Level Three");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 4) {
 			var btn = document.createElement("BUTTON");
@@ -79,6 +92,10 @@
 			var t = document.createTextNode("Level Four");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 5) {
 			var btn = document.createElement("BUTTON");
@@ -88,6 +105,10 @@
 			var t = document.createTextNode("Level Five");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 6) {
 			var btn = document.createElement("BUTTON");
@@ -97,6 +118,10 @@
 			var t = document.createTextNode("Level Six");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 		if (lvl >= 7) {
 			var btn = document.createElement("BUTTON");
@@ -106,6 +131,10 @@
 			var t = document.createTextNode("Level Seven");      
 			btn.appendChild(t);                                
 			document.getElementById("buttons").appendChild(btn);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
+			var skipLine = document.createElement("BR");
+			document.getElementById("buttons").appendChild(skipLine);
 		}
 	}
 </script>
