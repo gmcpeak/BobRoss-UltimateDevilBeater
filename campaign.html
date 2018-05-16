@@ -27,14 +27,13 @@
 	}
 </style>
 <html>
-	<body>
+	<body onload = "getLevels()">
 		<div>
 			<img src = "images/aoh-logo.png" id = "logo"></img>
 			<br></br>
+			<div id = "buttons"></div>
+			<br></br>
 			<a href = "game.html">Demo</a>
-			<a href = "level1/lvl1.html">Level One</a>
-			<a href = "level2/lvl2.html">Level Two</a>
-			<a href = "level3/lvl3.html">Level Three</a>
 			<br></br>
 			<button onclick = "window.location.href='modes.html'">Return to Game Modes</button>
 			<br></br>
@@ -42,3 +41,17 @@
 		</div>
 	</body>
 </html>
+<script>
+	function getLevels () { 
+		var lvl = localStorage.getItem("levelCount");
+		if (lvl >= 1) {
+			var btn = document.createElement("BUTTON");
+			btn.addEventListener ("click", function() {
+  				window.location.href = "level1/1-intro.html";
+			});
+			var t = document.createTextNode("Level One");       // Create a text node
+			btn.appendChild(t);                                // Append the text to <button>
+			document.getElementById("buttons").appendChild(btn);
+		}
+	}
+</script>

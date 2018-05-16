@@ -1,0 +1,24 @@
+body {
+	background-image:url("images/general-background.jpg"); 
+  		background-size: 100%;
+}
+div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
+	position: relative;
+    background-color: white;
+}
+h2 {
+	margin-bottom: -60px;
+	font-family: "Pig";
+}
+h1 {
+	font-family: "Pig";
+	font-size: 105px;
+	margin-bottom: -10px;
+}
+img {
+	height: 20%;
+	width: 20%;
+}

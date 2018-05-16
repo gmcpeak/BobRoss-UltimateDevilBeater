@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="menu.css">
 </head>
 <html>
-	<body>
+	<body onload = "setVar()">
 		<div class = "options">
 			<button onclick = "window.location.href='modes.html'">Game Modes</button>
 			<br></br>
@@ -15,3 +15,9 @@
 		</iframe>
 	</body>
 </html>
+<script>
+	function setVar () {
+		localStorage.setItem("levelCount", 1);
+		console.log("done");
+	}
+</script> 
