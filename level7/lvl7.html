@@ -4,11 +4,11 @@
 	<link rel="stylesheet" href="lvl7.css">
 </head>
 <html>
-	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)">
+	<body onload="setInterval(function(){gameloop();},35)"onkeydown="keydowner(event)"onkeyup="keyupper(event)" id = "back">
 		<header id = "infoBar">
 			<img src = "../images/painted-brudb-logo.png" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
-			<h2 id = "devil-name">The Devil (HP: 35)</h2>
+			<h2 id = "devil-name">The Devil (HP: 45)</h2>
 		</header>
 		<div class="moveable" id = "bob"><img src = ../images/Bob-Ross-Sprite.png id = "bob-img"></img></div>
 		<div class="moveable" id = "devil"><img src = ../images/Devil-Sprite.png id = "devil-img"></img></div>
@@ -28,9 +28,28 @@
 		var speed2 = 0;
 
 		var bobHP = 20;
-		var devilHP = 35;
+		var devilHP = 45;
+
+		var timer = 0;
+		var attack = 5;
 
 		function gameloop() {
+			if (attack == 4) {
+				document.body.style.backgroundImage = "url('../images/black-background.jpg')";
+				document.getElementById("devil").style.filter = "brightness(0%)";
+			} else {
+				document.body.style.backgroundImage = "url('../images/TheDevil-Background.jpeg')"
+				document.getElementById("devil").style.filter = "brightness(100%)";
+			}
+			if (attack == 0) {
+				speed = 10;
+			} else {
+				speed = 20;
+			}
+			timer++;
+			if (timer%60 == 0) {
+				changeAttack();
+			}
   			if (key_w) { y-=speed; }
   			if (key_a) { $(document.getElementById("bob")).addClass('flipped'); x-=speed; }
   			if (key_s) { y+=speed; }
@@ -85,11 +104,24 @@
   				$(dev).animate({left: x2 + "px"}, 500);
   			} else if (dir >= 4 && dir <= 7) {
   				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 500);
+  				if (attack == 2) {
+  					enemyFire(dev, x2, y2);
+  				}
   			} else {
   				$(dev).animate({top: y2 + "px", left: x2 + "px"}, 500);
-  				enemyFire(dev, x2, y2);
+  					enemyFire(dev, x2, y2);
   			}
   			checkHP(dude, dev); 
+  		}
+  		function changeAttack() {
+  			attack = Math.floor(Math.random() * 5);
+  				/*
+				if 0, make Bob go slowly
+				if 1, change keys for Bob
+				if 2, make the devil do a special huge fire attack
+				if 3, subtract 3 hp for each damage dealt by the devil
+				if 4, make everything dark
+			*/
   		}
 		function checkHP(dude, dev) {
 			var dangers = document.getElementsByClassName("devil-bullet");
@@ -104,6 +136,10 @@
 					bobHP--;
 					document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
 					$(dangers[i]).hide();
+					if (attack == 3) {
+					bobHP = bobHP-2;
+					document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
+					}
 				}
 			}
 			if (bobHP == 0) {
@@ -129,18 +165,32 @@
 		}
 		function keydowner(event) {
  			var k = event.which || event.keyCode;
- 			if (k == 87) { key_w = true; }
- 			if (k == 65) { key_a = true; }
- 			if (k == 83) { key_s = true; }
- 			if (k == 68) { key_d = true; }	
+ 			if (attack == 1) {
+ 				if (k == 87) { key_s = true; }
+ 				if (k == 65) { key_d = true; }
+ 				if (k == 83) { key_w = true; }
+ 				if (k == 68) { key_a = true; }
+ 			} else {
+ 				if (k == 87) { key_w = true; }
+ 				if (k == 65) { key_a = true; }
+ 				if (k == 83) { key_s = true; }
+ 				if (k == 68) { key_d = true; }
+ 			}	
 		}
 
 		function keyupper(event) {
  			var k = event.which || event.keyCode;
- 			if (k == 87) { key_w = false; }
- 			if (k == 65) { key_a = false; }
- 			if (k == 83) { key_s = false; }
- 			if (k == 68) { key_d = false; }
+ 			if (attack == 1) {
+ 				if (k == 87) { key_s = false; }
+ 				if (k == 65) { key_d = false; }
+ 				if (k == 83) { key_w = false; }
+ 				if (k == 68) { key_a = false; }
+ 			} else {
+ 				if (k == 87) { key_w = false; }
+ 				if (k == 65) { key_a = false; }
+ 				if (k == 83) { key_s = false; }
+ 				if (k == 68) { key_d = false; }
+ 			}
  			if (k == 32) { fire(k, x, y) }
 		}
 
