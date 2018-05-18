@@ -8,7 +8,7 @@ h1 {
 	font-size: 45px;
 }
 h2 {
-	text-shadow: -1px 1px white;
+	text-shadow: -1px 1px black;
 	font-size: 45px;
 }
 .happy-accidents {
@@ -30,4 +30,7 @@ a {
 #defeat {
 	background-image: url("images/defeat-screen-background.jpeg");
     background-size: 100%;
+}
+div {
+	background-color: white;
 }
