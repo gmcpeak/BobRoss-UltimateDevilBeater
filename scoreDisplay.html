@@ -5,7 +5,7 @@
 <style>
 	@import url("general-style.css");
 	h1, a {
-		font-family: "Pig";
+		font-size: 500%;
 	}
 	body {
 		text-align: center;
@@ -27,15 +27,13 @@
 	}
 </style>
 <html>
-	<audio controls autoplay hidden loop>
-      		<source src="Music/Shadow of the Devil.m4a" type="audio/mpeg">
-		</audio>
 	<body>
 		<div>
-			<img src = "images/vs-i-logo.png" id = "logo"></img>
-			<p>The object here is simple: last as long as you can and get the highest score possible. Your score constantly increases, and you will get a score bonus for each enemy you defeat.</p>
+			<img src = "images/painted-brudb-logo.png" id = "logo"></img>
+			<h2>Your Score:</h2>
+			<h1><script>document.write(localStorage.getItem("playerScore"));</script></h1>
 			<br></br>
-			<button onclick = "window.location.href='arcadegame.html'">Play Game</button>
+			<button onclick = "window.location.href='arcadegame.html'">Play Again</button>
 			<br></br>
 			<button onclick = "window.location.href='modes.html'">Return to Game Modes</button>
 			<br></br>

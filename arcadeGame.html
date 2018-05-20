@@ -250,12 +250,12 @@
 				if (overlap == true) {
 					bobHP--;
 					document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
-					$(dangers[i]).hide();
+					$(dangers[i]).remove();
 				}
 			}
 			if (bobHP <= 0) {
 				localStorage.setItem("playerScore", score);
-				window.location.href = "addScore.html";
+				window.location.href = "scoreDisplay.html";
 			}
 			var dangers2 = document.getElementsByClassName("bob-bullet");
 			for (var i = 0; i < dangers2.length; i++) {
@@ -270,12 +270,10 @@
 						var newVal = ($(this).data("hp")) - 1;
 						$(this).removeData("hp");
 						$(this).data("hp", (newVal));
-						$(dangers2[i]).hide();
+						$(dangers2[i]).remove();
 						if (($(this).data("hp")) <= 0) { // if hp equals zero, remove character
 							$(this).remove();
-							scoreAdd(5);
-							bobHP++; //reward every eliminated enemy with one extra hp point
-							document.getElementById("bob-name").innerHTML = "Bob Ross (HP: " + bobHP + ")";
+							scoreAdd(10);
 						}
 					}
 				});
