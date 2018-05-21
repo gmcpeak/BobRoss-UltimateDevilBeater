@@ -1,7 +1,7 @@
 @import url("../general-style.css");
 body{
     background-image: url("../images/Amdusias-background.jpeg");
-    background-size: 100%;
+    background-size: cover;
 }
 .moveable {
 	position: absolute;

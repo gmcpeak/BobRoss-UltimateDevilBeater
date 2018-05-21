@@ -1,7 +1,6 @@
 @import url("../general-style.css");
 body{
     background-color: black;
-    background-size: 100%;
 }
 .moveable {
 	position: absolute;
