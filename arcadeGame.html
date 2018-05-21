@@ -9,7 +9,7 @@
       		<source src="Music/Bob Ross vs. The Illuminati (In-Game Version).m4a" type="audio/mpeg">
 		</audio>
 		<header id = "infoBar">
-			<img src = "images/painted-brudb-logo.png" id = "logo"></img>
+			<img src = "images/painted-brudb-logo.PNG" id = "logo"></img>
 			<h2 id = "bob-name">Bob Ross (HP: 20)</h2>
 			<h2 id = "score">Score: 0</h2>
 		</header>
@@ -144,7 +144,7 @@
 			var enemyType = Math.floor(Math.random() * 9);
 			if (enemyType >= 7) {
 				newEn = {type: "eye", area: document.createElement("div"), t: document.createElement("IMG")};
-				newEn.t.setAttribute("src", "images/Eye-Sprite.png");
+				newEn.t.setAttribute("src", "images/Eye-Sprite.PNG");
 				newEn.area.appendChild(newEn.t);
 				newEn.area.setAttribute("class", "glow");
 				newEn.t.setAttribute("width", "120");
@@ -152,14 +152,14 @@
 				$(newEn.area).data( "hp", 9 );
 			} else if (5 < enemyType && enemyType < 7) {
 				newEn = {type: "demon", area: document.createElement("div"), t: document.createElement("IMG")};
-				newEn.t.setAttribute("src", "images/Demon-Sprite.png");
+				newEn.t.setAttribute("src", "images/Demon-Sprite.PNG");
 				newEn.area.appendChild(newEn.t);
 				newEn.t.setAttribute("width", "120");
 				newEn.t.setAttribute("height", "115");
 				$(newEn.area).data( "hp", 7 );
 			} else {
 				newEn = {type: "druid", area: document.createElement("div"), t: document.createElement("IMG")};
-				newEn.t.setAttribute("src", "images/Druid-Sprite.png");
+				newEn.t.setAttribute("src", "images/Druid-Sprite.PNG");
 				newEn.area.appendChild(newEn.t);
 				newEn.t.setAttribute("width", "100");
 				newEn.t.setAttribute("height", "100");
